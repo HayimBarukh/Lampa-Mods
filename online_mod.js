@@ -12110,7 +12110,7 @@
         title: 'KinoPub',
         source: new kinopub(this, object),
         search: true,
-        kp: false,
+        kp: true,
         imdb: true,
         disabled: true
       }];
