@@ -36,6 +36,10 @@
       return result;
     }
 
+    function hasSecretPassword() {
+      return !!Lampa.Storage.get('online_mod_secret_password', '');
+    }
+
     function decodeSecret(input, password) {
       var result = '';
       password = (password || Lampa.Storage.get('online_mod_secret_password', '')) + '';
@@ -68,16 +72,17 @@
     }
 
     function isDebug() {
-      return decodeSecret([40, 46, 7, 3, 5]) === 'debug' && checkDebug();
+      return (hasSecretPassword() || decodeSecret([40, 46, 7, 3, 5]) === 'debug') && checkDebug();
     }
 
     function isDebug2() {
-      return decodeSecret([11, 82, 45, 39, 1]) === 'debug' || decodeSecret([83, 16, 7, 45, 63]) === 'debug';
+      return hasSecretPassword() || decodeSecret([11, 82, 45, 39, 1]) === 'debug' || decodeSecret([83, 16, 7, 45, 63]) === 'debug';
     }
 
     function isDebug3() {
       var res = false;
       var origin = window.location.origin || '';
+      if (hasSecretPassword()) return true;
       decodeSecret([53, 10, 80, 65, 90, 90, 94, 78, 65, 120, 41, 25, 84, 66, 94, 72, 24, 92, 28, 32, 38, 67, 91, 75, 91, 90, 29, 73, 83, 109, 42, 22, 85, 91, 89, 94], atob('cHJpc21pc2hl')).split(';').forEach(function (s) {
         res |= endsWith(origin, s);
       });
