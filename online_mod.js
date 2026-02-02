@@ -11120,7 +11120,6 @@
       var prox = component.proxy('kinopub');
       var embed = 'https://api.srvkp.com/v1/';
       var token = Utils.decodeSecret([56, 32, 0, 66, 18, 86, 49, 1, 70, 63, 40, 46, 83, 78, 22, 78, 119, 66, 20, 51, 33, 59, 16, 28, 91, 86, 41, 2, 64, 47, 125, 125]);
-      var token = (Lampa.Storage.get('online_mod_kinopub_token', '') + '').trim() || Utils.decodeSecret([56, 32, 0, 66, 18, 86, 49, 1, 70, 63, 40, 46, 83, 78, 22, 78, 119, 66, 20, 51, 33, 59, 16, 28, 91, 86, 41, 2, 64, 47, 125, 125]);
       var server = 'ru';
       var hls_type = 'hls';
       var replace_mask = /\/(pd|http|hls4|hls2|hls)\/[^\/]*/;
@@ -12111,7 +12110,7 @@
         title: 'KinoPub',
         source: new kinopub(this, object),
         search: true,
-        kp: true,
+        kp: false,
         imdb: true,
         disabled: true
       }];
@@ -13884,28 +13883,6 @@
           en: 'For example: nxjekeb57385b..',
           zh: '例如： nxjekeb57385b..'
         },
-        online_mod_kinopub_token_title: {
-          ru: 'Токен KinoPub',
-          uk: 'Токен KinoPub',
-          be: 'Токен KinoPub',
-          en: 'KinoPub token',
-          zh: 'KinoPub 令牌'
-        },
-        online_mod_kinopub_token_descr: {
-          ru: 'Вставьте access_token для API KinoPub',
-          uk: 'Вставте access_token для API KinoPub',
-          be: 'Устаўце access_token для API KinoPub',
-          en: 'Paste access_token for KinoPub API',
-          zh: '粘贴 KinoPub API 的 access_token'
-        },
-        online_mod_kinopub_token_placeholder: {
-          ru: 'Например: 8f3a... (access_token)',
-          uk: 'Наприклад: 8f3a... (access_token)',
-          be: 'Напрыклад: 8f3a... (access_token)',
-          en: 'For example: 8f3a... (access_token)',
-          zh: '例如：8f3a... (access_token)'
-        },
-
         online_mod_filmix_param_add_device: {
           ru: 'Добавить устройство на Filmix',
           uk: 'Додати пристрій на Filmix',
@@ -14702,11 +14679,7 @@
         template += "\n        <div class=\"settings-param selector\" data-name=\"online_mod_proxy_cdnmovies\" data-type=\"toggle\">\n            <div class=\"settings-param__name\">#{online_mod_proxy_balanser} CDNMovies</div>\n            <div class=\"settings-param__value\"></div>\n        </div>";
       }
 
-      template += "\n        <div class=\"settings-param selector\" data-name=\"online_mod_proxy_filmix\" data-type=\"toggle\">\n            <div class=\"settings-param__name\">#{online_mod_proxy_balanser} Filmix</div>\n            <div class=\"settings-param__value\"></div>\n        </div>";
-
-      template += "\n        <div class=\"settings-param selector\" data-name=\"online_mod_proxy_kinopub\" data-type=\"toggle\">\n            <div class=\"settings-param__name\">#{online_mod_proxy_balanser} KinoPub</div>\n            <div class=\"settings-param__value\"></div>\n        </div>";
-
-      template += "\n        <div class=\"settings-param selector\" data-name=\"online_mod_kinopub_token\" data-type=\"input\" placeholder=\"#{online_mod_kinopub_token_placeholder}\">\n            <div class=\"settings-param__name\">#{online_mod_kinopub_token_title}</div>\n            <div class=\"settings-param__value\"></div>\n            <div class=\"settings-param__descr\">#{online_mod_kinopub_token_descr}</div>\n        </div>";
+      template += "\n        <div class=\"settings-param selector\" data-name=\"online_mod_proxy_filmix\" data-type=\"toggle\">\n            <div class=\"settings-param__name\">#{online_mod_proxy_balanser} Filmix﬩</div>\n            <div class=\"settings-param__value\"></div>\n        </div>";
 
       if (Utils.isDebug()) {
         template += "\n        <div class=\"settings-param selector\" data-name=\"online_mod_proxy_fancdn\" data-type=\"toggle\">\n            <div class=\"settings-param__name\">#{online_mod_proxy_balanser} FanCDN</div>\n            <div class=\"settings-param__value\"></div>\n        </div>";
